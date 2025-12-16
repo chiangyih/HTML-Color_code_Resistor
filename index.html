@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resistor Master | Premium Color Code Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Resistor Master</h1>
+            <p class="subtitle">Precision Color Code Calculator</p>
+        </header>
+
+        <nav class="mode-switch">
+            <button id="mode-4" class="mode-btn active" onclick="setMode(4)">4 Bands</button>
+            <button id="mode-5" class="mode-btn" onclick="setMode(5)">5 Bands</button>
+        </nav>
+
+        <main>
+            <!-- Resistor Visual Representation -->
+            <div class="resistor-preview-container">
+                <div class="wire left-wire"></div>
+                <div class="resistor-body">
+                    <div id="band1" class="band"></div>
+                    <div id="band2" class="band"></div>
+                    <div id="band3" class="band hidden"></div> <!-- Only for 5-band -->
+                    <div id="band-multiplier" class="band"></div>
+                    <div id="band-tolerance" class="band spaced-band"></div>
+                </div>
+                <div class="wire right-wire"></div>
+            </div>
+
+            <div class="result-display">
+                <h2 id="resistance-value">1 kΩ</h2>
+                <span id="tolerance-value">± 5%</span>
+            </div>
+
+            <div class="controls-container" id="controls">
+                <!-- Controls will be injected here by JS -->
+            </div>
+        </main>
+
+        <footer>
+            <div class="history-log">
+                <!-- Future history feature? -->
+            </div>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
