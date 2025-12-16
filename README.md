@@ -1,8 +1,10 @@
 # 國立新化高工資訊科 色碼電阻計算器
 **Resistor Master - Color Code Calculator**
 
+🔗 **線上體驗 (Live Demo)**: [https://chiangyih.github.io/HTML-Color_code_Resistor/](https://chiangyih.github.io/HTML-Color_code_Resistor/)
+
 Author: Tseng  
-Last modify: 2025.12.16 22:49
+Last modify: 2025.12.16 22:54
 
 <img width="683" height="812" alt="image" src="https://github.com/user-attachments/assets/2ffd7bd2-02c8-4b47-83ee-3a32dff1eca1" />
 
