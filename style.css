@@ -1,247 +1,463 @@
+/**
+ * ============================================
+ * 色碼電阻計算器 - CSS 樣式表
+ * ============================================
+ * 本樣式表採用 CSS Variables 管理主題色彩
+ * 實現深色模式、玻璃擬態效果與響應式設計
+ */
+
+/* ============================================
+   CSS 變數定義區 (CSS Variables / Custom Properties)
+   ============================================ */
 :root {
-    /* Color Palette - Premium Dark Neon */
+    /* 
+     * 主色調 - 深色霓虹風格配色
+     * Premium Dark Neon Color Palette
+     */
     --bg-dark: #0f172a;
+    /* 深色背景 - 深藍黑色 */
     --bg-card: #1e293b;
+    /* 卡片背景 - 深灰藍色 */
     --text-primary: #f8fafc;
+    /* 主要文字顏色 - 亮白色 */
     --text-secondary: #94a3b8;
+    /* 次要文字顏色 - 灰藍色 */
     --accent-primary: #38bdf8;
-    /* Sky Blue */
+    /* 強調色 - 天空藍 */
     --accent-glow: rgba(56, 189, 248, 0.4);
+    /* 發光效果顏色 - 半透明天空藍 */
     --resistor-body: #e2e8f0;
-    /* Light beige/grey for contrast with bands */
+    /* 電阻本體預設色 - 淺灰色 */
     --wire: #94a3b8;
+    /* 導線顏色 - 灰色 */
 
-    /* Resistor Colors */
+    /* 
+     * 電阻色環顏色定義
+     * Resistor Band Colors
+     */
     --color-black: #000000;
+    /* 黑色 */
     --color-brown: #5d4037;
+    /* 棕色 */
     --color-red: #ef4444;
+    /* 紅色 */
     --color-orange: #f97316;
+    /* 橙色 */
     --color-yellow: #eab308;
+    /* 黃色 */
     --color-green: #22c55e;
+    /* 綠色 */
     --color-blue: #3b82f6;
+    /* 藍色 */
     --color-violet: #8b5cf6;
+    /* 紫色 */
     --color-grey: #64748b;
+    /* 灰色 */
     --color-white: #ffffff;
+    /* 白色 */
     --color-gold: #d4af37;
+    /* 金色 */
     --color-silver: #c0c0c0;
+    /* 銀色 */
 
+    /* 
+     * 字型與動畫設定
+     */
     --font-main: 'Inter', sans-serif;
+    /* 主要字型 - 使用 Google Fonts 的 Inter */
     --transition-speed: 0.3s;
+    /* 過渡動畫時間 - 0.3 秒 */
 }
 
+/* ============================================
+   全域重置樣式 (Global Reset)
+   ============================================ */
 * {
     box-sizing: border-box;
+    /* 使用 border-box 盒模型，讓 padding 包含在寬度內 */
     margin: 0;
+    /* 清除預設外邊距 */
     padding: 0;
+    /* 清除預設內邊距 */
 }
 
+/* ============================================
+   頁面主體樣式 (Body)
+   ============================================ */
 body {
     background-color: var(--bg-dark);
+    /* 深色背景 */
     color: var(--text-primary);
+    /* 主要文字顏色 */
     font-family: var(--font-main);
+    /* 使用定義的主字型 */
     display: flex;
+    /* 使用 Flexbox 佈局 */
     justify-content: center;
+    /* 水平置中 */
     align-items: center;
+    /* 垂直置中 */
     min-height: 100vh;
+    /* 最小高度為視窗高度 */
     overflow-x: hidden;
+    /* 隱藏水平捲軸 */
 }
 
+/* ============================================
+   主應用程式容器 (App Container)
+   玻璃擬態 (Glassmorphism) 風格卡片
+   ============================================ */
 .app-container {
     background-color: var(--bg-card);
+    /* 卡片背景色 */
     width: 90%;
+    /* 寬度 90% */
     max-width: 600px;
+    /* 最大寬度 600px */
     padding: 2rem;
+    /* 內邊距 2rem */
     border-radius: 20px;
+    /* 圓角 20px */
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    /* 深色陰影效果 */
     border: 1px solid rgba(255, 255, 255, 0.05);
+    /* 細微的白色邊框 */
     text-align: center;
+    /* 文字置中 */
 }
 
+/* ============================================
+   標題區域樣式 (Header)
+   ============================================ */
+
+/* 主標題 - 漸層文字效果 */
 header h1 {
     font-weight: 700;
+    /* 粗體 */
     font-size: 2rem;
+    /* 字體大小 2rem */
     margin-bottom: 0.5rem;
+    /* 下方間距 */
+    /* 漸層背景 - 從白色到天空藍 */
     background: linear-gradient(to right, var(--text-primary), var(--accent-primary));
     -webkit-background-clip: text;
+    /* WebKit 瀏覽器的文字裁切 */
     background-clip: text;
+    /* 標準文字裁切 */
     -webkit-text-fill-color: transparent;
+    /* 文字填充透明，顯示背景漸層 */
 }
 
+/* 副標題樣式 */
 .subtitle {
     color: var(--text-secondary);
+    /* 次要文字顏色 */
     font-size: 0.9rem;
+    /* 較小的字體 */
     margin-bottom: 2rem;
+    /* 下方間距 */
 }
 
-/* Mode Switcher */
+/* ============================================
+   模式切換按鈕 (Mode Switcher)
+   用於切換四環/五環電阻模式
+   ============================================ */
 .mode-switch {
     display: flex;
+    /* Flexbox 佈局 */
     justify-content: center;
+    /* 水平置中 */
     gap: 1rem;
+    /* 按鈕間距 1rem */
     margin-bottom: 2rem;
+    /* 下方間距 */
 }
 
+/* 模式按鈕基本樣式 */
 .mode-btn {
     background: transparent;
+    /* 透明背景 */
     border: 1px solid var(--text-secondary);
+    /* 灰色邊框 */
     color: var(--text-secondary);
+    /* 灰色文字 */
     padding: 0.5rem 1.5rem;
+    /* 內邊距 */
     border-radius: 50px;
+    /* 膠囊形圓角 */
     cursor: pointer;
+    /* 滑鼠游標為手指 */
     transition: all 0.3s ease;
+    /* 平滑過渡效果 */
     font-weight: 600;
+    /* 半粗體 */
 }
 
+/* 模式按鈕懸停效果 */
 .mode-btn:hover {
     border-color: var(--accent-primary);
+    /* 邊框變為強調色 */
     color: var(--text-primary);
+    /* 文字變為主要顏色 */
 }
 
+/* 模式按鈕啟用狀態 - 發光效果 */
 .mode-btn.active {
     background: var(--accent-primary);
+    /* 天空藍背景 */
     color: var(--bg-dark);
+    /* 深色文字 */
     border-color: var(--accent-primary);
+    /* 天空藍邊框 */
     box-shadow: 0 0 15px var(--accent-glow);
+    /* 發光陰影效果 */
 }
 
-/* Resistor Visual */
+/* ============================================
+   電阻視覺化區域 (Resistor Visual)
+   模擬真實電阻外觀
+   ============================================ */
+
+/* 電阻預覽容器 */
 .resistor-preview-container {
     position: relative;
+    /* 相對定位 */
     height: 120px;
+    /* 高度 120px */
     display: flex;
+    /* Flexbox 佈局 */
     align-items: center;
+    /* 垂直置中 */
     justify-content: center;
+    /* 水平置中 */
     margin: 3rem 0;
+    /* 上下間距 3rem */
 }
 
+/* 導線樣式 - 電阻兩側的金屬線 */
 .wire {
     height: 8px;
+    /* 導線高度 */
     width: 60px;
+    /* 導線寬度 */
     background-color: var(--wire);
+    /* 灰色 */
 }
 
+/* 電阻本體樣式 */
 .resistor-body {
     height: 60px;
+    /* 電阻高度 */
     width: 240px;
+    /* 電阻寬度 */
     background: var(--resistor-body);
+    /* 預設背景色 */
     border-radius: 10px;
+    /* 圓角 */
     display: flex;
+    /* Flexbox 佈局 */
     justify-content: space-evenly;
+    /* 色環均勻分布 */
     align-items: center;
+    /* 垂直置中 */
     position: relative;
+    /* 相對定位 */
     overflow: hidden;
+    /* 隱藏溢出內容 */
+    /* 內凹陰影 + 外部陰影，營造立體感 */
     box-shadow: inset 0 -10px 10px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.3);
     transition: background-color 0.5s ease;
+    /* 背景色過渡動畫 */
 }
 
+/* 四環電阻模式 - 碳膜電阻外觀（米色） */
 .resistor-body.mode-4 {
     background-color: #e6d5ac;
-    /* Beige for Carbon Film */
+    /* 米色/淺褐色 */
 }
 
+/* 五環電阻模式 - 金屬膜電阻外觀（藍色） */
 .resistor-body.mode-5 {
     background-color: #81b1d3;
-    /* Blue for Metal Film */
+    /* 淺藍色 */
 }
 
-/* Resistor Shape Tapering (Optional visual flair) */
+/* 電阻本體兩端的錐形裝飾（偽元素） */
 .resistor-body::before,
 .resistor-body::after {
     content: '';
+    /* 必要的偽元素內容 */
     position: absolute;
+    /* 絕對定位 */
     top: 0;
     bottom: 0;
     width: 20px;
+    /* 寬度 20px */
     background: inherit;
+    /* 繼承父元素背景 */
     z-index: 1;
+    /* 層級 */
 }
 
+/* ============================================
+   色環樣式 (Color Bands)
+   ============================================ */
+
+/* 色環基本樣式 */
 .band {
     width: 15px;
+    /* 色環寬度 */
     height: 100%;
+    /* 高度填滿 */
     z-index: 2;
+    /* 層級高於本體 */
     transition: background-color 0.2s ease;
+    /* 顏色變換過渡動畫 */
 }
 
+/* 誤差環 - 與其他色環保持間距 */
 .band.spaced-band {
     margin-left: 20px;
-    /* Gap for tolerance band */
+    /* 左側間距，區分誤差環 */
 }
 
+/* 隱藏狀態 - 用於四環模式隱藏第三環 */
 .band.hidden {
     display: none;
+    /* 不顯示 */
 }
 
-/* Result Display */
+/* ============================================
+   結果顯示區域 (Result Display)
+   ============================================ */
 .result-display {
     margin-bottom: 2rem;
+    /* 下方間距 */
 }
 
+/* 阻值數字 - 大字體發光效果 */
 .result-display h2 {
     font-size: 3rem;
+    /* 大字體 */
     font-weight: 700;
+    /* 粗體 */
     color: var(--accent-primary);
+    /* 天空藍色 */
     text-shadow: 0 0 20px var(--accent-glow);
+    /* 發光文字陰影 */
     margin-bottom: 0.5rem;
+    /* 下方間距 */
 }
 
+/* 誤差值顯示 */
 .result-display span {
     font-size: 1.2rem;
+    /* 字體大小 */
     color: var(--text-secondary);
+    /* 次要文字顏色 */
 }
 
-/* Controls */
+/* ============================================
+   控制面板區域 (Controls)
+   ============================================ */
+
+/* 控制項容器 - Grid 網格佈局 */
 .controls-container {
     display: grid;
+    /* Grid 佈局 */
     gap: 1rem;
+    /* 網格間距 */
 }
 
+/* 單一控制組（標籤 + 下拉選單） */
 .control-group {
     display: flex;
+    /* Flexbox 佈局 */
     flex-direction: column;
+    /* 垂直排列 */
     align-items: flex-start;
+    /* 靠左對齊 */
 }
 
+/* 控制項標籤樣式 */
 .control-group label {
     font-size: 0.8rem;
+    /* 小字體 */
     color: var(--text-secondary);
+    /* 次要文字顏色 */
     margin-bottom: 0.3rem;
+    /* 與選單的間距 */
     margin-left: 0.5rem;
+    /* 左側縮排 */
 }
 
+/* ============================================
+   下拉選單樣式 (Select Dropdown)
+   自訂外觀，移除預設樣式
+   ============================================ */
 select {
     width: 100%;
+    /* 寬度填滿 */
     padding: 0.8rem;
+    /* 內邊距 */
     border-radius: 10px;
+    /* 圓角 */
     background-color: rgba(255, 255, 255, 0.05);
+    /* 半透明白色背景 */
     border: 1px solid rgba(255, 255, 255, 0.1);
+    /* 半透明白色邊框 */
     color: var(--text-primary);
+    /* 主要文字顏色 */
     font-family: inherit;
+    /* 繼承字型 */
     font-size: 1rem;
+    /* 字體大小 */
     cursor: pointer;
+    /* 滑鼠游標為手指 */
     transition: all 0.3s;
+    /* 過渡動畫 */
     appearance: none;
-    /* Remove default arrow */
+    /* 移除瀏覽器預設外觀 */
+    /* 
+     * 自訂下拉箭頭圖示
+     * 使用 SVG 內嵌在 CSS 中
+     */
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2394a3b8'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
     background-repeat: no-repeat;
+    /* 不重複 */
     background-position: right 1rem center;
+    /* 箭頭位置在右側 */
     background-size: 1.2rem;
+    /* 箭頭大小 */
 }
 
+/* 下拉選單懸停效果 */
 select:hover {
     border-color: var(--accent-primary);
+    /* 邊框變為強調色 */
     background-color: rgba(255, 255, 255, 0.1);
+    /* 背景加深 */
 }
 
+/* 下拉選單聚焦效果 - 發光外框 */
 select:focus {
     outline: none;
+    /* 移除預設外框 */
     border-color: var(--accent-primary);
+    /* 強調色邊框 */
     box-shadow: 0 0 0 3px var(--accent-glow);
+    /* 發光外框效果 */
 }
 
-/* Responsive Grid for Controls */
+/* ============================================
+   響應式設計 (Responsive Design)
+   針對不同螢幕寬度調整佈局
+   ============================================ */
+
+/* 螢幕寬度大於 500px 時，控制項改為兩欄排列 */
 @media (min-width: 500px) {
     .controls-container {
         grid-template-columns: repeat(2, 1fr);
+        /* 兩欄等寬 */
     }
 }
