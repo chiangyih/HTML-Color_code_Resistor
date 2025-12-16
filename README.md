@@ -1,7 +1,9 @@
 # Resistor Master (色碼電阻計算機)
 Author: Tseng
 Last modify:2025.12.16 15:21 
-![Uploading image.png…]()
+
+<img width="683" height="812" alt="image" src="https://github.com/user-attachments/assets/2ffd7bd2-02c8-4b47-83ee-3a32dff1eca1" />
+
 
 
 這是一個設計精美、功能強大的網頁版色碼電阻計算機。專為電子工程師、學生及愛好者設計，提供直觀的視覺回饋與即時計算功能。
